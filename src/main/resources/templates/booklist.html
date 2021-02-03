@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Server Programming with Spring Boots</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	<style> 
+		/*
+		table {
+			 border-collapse: collapse;
+		}
+		thead {
+			background-color: rgba(30, 200, 60, 0.5);
+		}
+		td, th {
+			border: 1px solid #999;
+			padding: 0.5rem;
+		}*/
+		
+		body {
+		padding: 0.5rem 8rem 0.5rem 8rem;
+		}
+		h1 {
+			text-align: center;
+		}
+		.center {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		}
+	</style>
+</head>
+<body>
+	<h1 >Books / Kirjat </h1>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>TITLE</th>
+			    <th>AUTHOR</th>
+			    <th>ISBN</th>
+			    <th>PRICE</th>
+			    <th>YEAR</th>
+			    <th colspan=2></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each = "book : ${books}">
+				<td th:text="${book.title}"></td> 
+				<td th:text="${book.author}"></td>
+				<td th:text="${book.isbn}"></td>
+				<td th:text="${book.price}"></td>
+				<td th:text="${book.year}"></td>
+				<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
+				<td><a class="btn btn-warning" th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
+			</tr>
+		</tbody>
+	</table>
+	 <br></br>
+	 <div class="center">
+		<a class="btn btn-success" href="/add">Add Book</a>  
+	</div>
+</body>
+</html>

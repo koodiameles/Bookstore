@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Server Programming with Spring Boots</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	<style>
+		div {
+			padding: 0.5rem 14rem 0.5rem 14rem;
+		}
+		h1 {
+			text-align: center;
+		}
+		.center {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Add Book</h1>
+	<div class="form-group"> 
+		<form th:object="${book}" th:action="@{save}" action="#" method="post">
+		  	<label for="title">Title</label>
+			<input class="form-control" type="text" id="title" th:field="*{title}" />
+			<div></div>
+			
+		  	<label for="author">Author</label>
+			<input class="form-control" type="text" id="author" th:field="*{author}" />
+			<div></div>
+			
+		  	<label for="isbn">ISBN</label>
+			<input class="form-control" type="text" th:field="*{isbn}" />
+			<div></div>
+			
+			<label for="price">Price</label>
+			<input class="form-control" type="text" th:field="*{price}" />
+			<div></div>
+			
+			<label for="year">Year</label>
+			<input class="form-control" type="text" th:field="*{year}" />
+			<div></div>
+			
+			<div class="center">
+				<input class="btn btn-success" type="submit" value="Save"></input>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
