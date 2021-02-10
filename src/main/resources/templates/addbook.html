@@ -42,9 +42,15 @@
 			<label for="year">Year</label>
 			<input class="form-control" type="text" th:field="*{year}" />
 			<div></div>
+
+			<label for="categorylist">Category</label>
+			<select id="categorylist" th:field="*{category}" class="form-control">
+				  <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+		   </select>
+		   <div></div>
 			
 			<div class="center">
-				<input class="btn btn-success" type="submit" value="Save"></input>
+				<input class="btn btn-success" type="submit" value="Save" />
 			</div>
 		</form>
 	</div>

@@ -40,7 +40,8 @@
 			    <th>ISBN</th>
 			    <th>PRICE</th>
 			    <th>YEAR</th>
-			    <th colspan=2></th>
+				<th>CATEGORY</th>
+			    <th colspan="2"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -50,12 +51,13 @@
 				<td th:text="${book.isbn}"></td>
 				<td th:text="${book.price}"></td>
 				<td th:text="${book.year}"></td>
+				<td th:text="${book.category.name}"></td> 	
 				<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
 				<td><a class="btn btn-warning" th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
 			</tr>
 		</tbody>
 	</table>
-	 <br></br>
+	 <br />
 	 <div class="center">
 		<a class="btn btn-success" href="/add">Add Book</a>  
 	</div>
