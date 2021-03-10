@@ -1,7 +1,7 @@
 package fi.jussi.Bookstore.web;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,8 +45,9 @@ public class BookController {
 		return "addbook";
 	}
 	
-	//EDIT BOOK
+	//EDIT BOOK (VAIN ADMIN)
 	@GetMapping("/edit/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String editBook (@PathVariable("id") Long bookId, Model model) {			
 		System.out.println("Edit book ");
 		model.addAttribute("book", repository.findById(bookId));
@@ -54,8 +55,9 @@ public class BookController {
 		return "editbook";
 	}
 
-	//DELETE BOOK
+	//DELETE BOOK (VAIN ADMIN)
 	@GetMapping("/delete/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteBook (@PathVariable("id") Long bookId, Model model) {					
 		System.out.println("Delete book " + bookId);
 		repository.deleteById(bookId);
